@@ -5,11 +5,12 @@
     )
     (def inner_test (self)
         (= sq (lambda (x) (* x x)))
-        (= bee (list))
-        (for (i) self.items
-            (bee.append (+ (sq i) (test_fun i 5)))
-        )
-        (return (sum bee))
+        (return (sum
+            (map
+                (lambda (i) (+ (sq i) (test_fun i 5)))
+                self.items
+            )
+        ))
     )
     (def test (self) (print (% "hello, world %d" (self.inner_test))) )
 )
